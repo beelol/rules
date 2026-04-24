@@ -33,6 +33,11 @@ path = "rules/40-execution.md"
 enabled = true
 
 [[modules]]
+id = "architecture"
+path = "rules/45-architecture.md"
+enabled = true
+
+[[modules]]
 id = "managed-rules"
 path = "rules/50-managed-rules.md"
 enabled = true
