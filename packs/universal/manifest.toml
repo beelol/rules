@@ -1,0 +1,80 @@
+[pack]
+id = "universal"
+name = "Universal Agent Rules"
+version = "0.1.0"
+description = "Baseline instructions for AI coding agents."
+
+[source]
+default_ref = "master"
+
+[[modules]]
+id = "mission"
+path = "rules/00-mission.md"
+enabled = true
+
+[[modules]]
+id = "context"
+path = "rules/10-context.md"
+enabled = true
+
+[[modules]]
+id = "concision"
+path = "rules/20-concision.md"
+enabled = true
+
+[[modules]]
+id = "readability"
+path = "rules/30-readability.md"
+enabled = true
+
+[[modules]]
+id = "execution"
+path = "rules/40-execution.md"
+enabled = true
+
+[[modules]]
+id = "managed-rules"
+path = "rules/50-managed-rules.md"
+enabled = true
+
+[[targets]]
+id = "agents"
+path = "AGENTS.md"
+template = "templates/AGENTS.md.tmpl"
+managed = true
+
+[[targets]]
+id = "claude"
+path = "CLAUDE.md"
+template = "templates/CLAUDE.md.tmpl"
+managed = true
+
+[[targets]]
+id = "gemini"
+path = "GEMINI.md"
+template = "templates/GEMINI.md.tmpl"
+managed = true
+
+[[targets]]
+id = "cursor"
+path = ".cursor/rules/universal-agent-rules.mdc"
+template = "templates/cursor-rule.mdc.tmpl"
+managed = true
+
+[[targets]]
+id = "cursor-legacy"
+path = ".cursorrules"
+template = "templates/cursorrules.tmpl"
+managed = true
+
+[[targets]]
+id = "cline"
+path = ".clinerules/universal-agent-rules.md"
+template = "templates/cline-rule.md.tmpl"
+managed = true
+
+[[targets]]
+id = "antigravity"
+path = ".agent/rules/universal-agent-rules.md"
+template = "templates/antigravity-rule.md.tmpl"
+managed = true
