@@ -37,6 +37,11 @@ id = "managed-rules"
 path = "rules/50-managed-rules.md"
 enabled = true
 
+[[modules]]
+id = "jester"
+path = "rules/60-jester.md"
+enabled = true
+
 [[targets]]
 id = "agents"
 path = "AGENTS.md"
