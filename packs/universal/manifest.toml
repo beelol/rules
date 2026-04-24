@@ -62,7 +62,7 @@ managed = true
 
 [[targets]]
 id = "cursor"
-path = ".cursor/rules/universal-agent-rules.mdc"
+path = ".cursor/rules/AGENTS.mdc"
 template = "templates/cursor-rule.mdc.tmpl"
 managed = true
 
@@ -74,12 +74,18 @@ managed = true
 
 [[targets]]
 id = "cline"
-path = ".clinerules/universal-agent-rules.md"
+path = ".clinerules/AGENTS.md"
 template = "templates/cline-rule.md.tmpl"
 managed = true
 
 [[targets]]
+id = "roo"
+path = ".roo/rules/AGENTS.md"
+template = "templates/roo-rule.md.tmpl"
+managed = true
+
+[[targets]]
 id = "antigravity"
-path = ".agent/rules/universal-agent-rules.md"
+path = ".agent/rules/AGENTS.md"
 template = "templates/antigravity-rule.md.tmpl"
 managed = true
