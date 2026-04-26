@@ -38,6 +38,11 @@ path = "rules/45-architecture.md"
 enabled = true
 
 [[modules]]
+id = "knowledge-fragments"
+path = "rules/47-knowledge-fragments.md"
+enabled = true
+
+[[modules]]
 id = "managed-rules"
 path = "rules/50-managed-rules.md"
 enabled = true
