@@ -28,6 +28,11 @@ path = "rules/30-readability.md"
 enabled = true
 
 [[modules]]
+id = "digestibility"
+path = "rules/35-digestibility.md"
+enabled = true
+
+[[modules]]
 id = "execution"
 path = "rules/40-execution.md"
 enabled = true
