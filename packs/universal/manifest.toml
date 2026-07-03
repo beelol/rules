@@ -38,6 +38,11 @@ path = "rules/40-execution.md"
 enabled = true
 
 [[modules]]
+id = "implementation-priority"
+path = "rules/42-implementation-priority.md"
+enabled = true
+
+[[modules]]
 id = "architecture"
 path = "rules/45-architecture.md"
 enabled = true

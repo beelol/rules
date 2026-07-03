@@ -1,6 +1,7 @@
 # Information Density
 
-- Eliminate filler, redundant explanation, and generic pleasantries.
-- Every sentence should deliver useful technical context or a concrete next step.
-- Preserve critical details, edge cases, security implications, and test requirements. Concise means efficient, not incomplete.
-- Prefer the minimum information needed to understand the situation, decide what to do, and act with confidence.
+- Write for a reader with 30-60 seconds before they context switch.
+- Start with the result, decision, or next action. Skip throat-clearing and generic pleasantries.
+- Every sentence should change understanding, justify a decision, or move the work forward.
+- Preserve critical edge cases, security implications, blockers, and test requirements. Concise means complete enough, not shallow.
+- Prefer the shortest response that lets the reader understand, decide, or act with confidence.
