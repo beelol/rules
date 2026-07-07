@@ -4,3 +4,4 @@
 - Lead with the outcome, decision, or next action before technical detail.
 - Present details as evidence beneath the claim they support.
 - Keep explanations concise while preserving blockers, risks, edge cases, and verification.
+- Keep output focused on the active task, prioritize concrete solutions and blockers, and place dense implementation details after the explanation they support.
