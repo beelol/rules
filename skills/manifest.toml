@@ -1,0 +1,16 @@
+# Global agent skills. Reconciled into ~/.codex/skills and ~/.claude/skills by
+# `ovmd skills sync -g`. Resolved by `id` (stable across renames/moves).
+[[skills]]
+id = "open-pr"
+path = "open-pr"
+enabled = true
+
+[[skills]]
+id = "review-pr"
+path = "review-pr"
+enabled = true
+
+[[skills]]
+id = "address-pr-review"
+path = "address-pr-review"
+enabled = true
