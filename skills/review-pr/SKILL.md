@@ -65,7 +65,3 @@ If authorized, post only the approved findings and return the PR URL:
 - Do not edit files, commit, push, or resolve review threads under this skill.
 - Do not turn review findings into implementation work without a separate user request.
 - Use address-pr-review when the task is to modify an existing PR from reviewer feedback.
-
-## Formatting
-
-If posting to github, ensure the comments have the badge at the start specifying the review was done automatically via an overmind skill with a color, ideally the blue one with this format ![Overmind automated review](https://img.shields.io/badge/Overmind-automated%20review-blue)
