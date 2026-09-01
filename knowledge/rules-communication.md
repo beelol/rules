@@ -5,3 +5,5 @@
 - Present details as evidence beneath the claim they support.
 - Keep explanations concise while preserving blockers, risks, edge cases, and verification.
 - Keep output focused on the active task, prioritize concrete solutions and blockers, and place dense implementation details after the explanation they support.
+- Actionable findings must stand alone without surrounding context, use brief **Why/Fix** sections, and end with the smallest concrete fix.
+- GitHub review comments do not include automated-review badges.

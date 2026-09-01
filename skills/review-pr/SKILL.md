@@ -24,7 +24,13 @@ Review the proposed diff. Do not adjust the branch or address existing review co
 
 Ignore pre-existing problems, personal style, speculative cleanup, praise, and unrelated debt. Zero findings is valid.
 
-For every blocker or suggestion, provide path and line, impact, evidence, and the smallest concrete fix. For every question, provide path and line, the relevant context, and the direct question. Keep each item to one or two sentences.
+For every blocker or suggestion, write a self-contained finding that makes sense without the PR body, surrounding diff, or prior conversation:
+
+- **Why:** In one or two short sentences, lead with the concrete user or system impact, then name the code behavior that causes it.
+- **Fix:** In one short final sentence, give the smallest corrective change and include the required regression test when behavior changes.
+- Cite the exact path and tight line range.
+
+Keep each complete **Why/Fix** item brief. Do not make the reader reconstruct impact, cause, or remediation from implementation details. For every question, provide path and line, the relevant context, and the direct question.
 
 ## Label every finding
 

@@ -51,7 +51,3 @@ Report totals for comments, fixes, explanations, pushbacks, superseded items, re
 ## Write safety
 
 If the user requested only a plan or audit, do not edit, commit, push, reply, or resolve. Perform each external write only when the request authorizes it.
-
-## Formatting
-
-If posting to github, ensure the comments have the badge at the start specifying the review was done automatically via an overmind skill with a color, ideally the blue one with this format ![Overmind automated review](https://img.shields.io/badge/Overmind-automated%20review-blue)
