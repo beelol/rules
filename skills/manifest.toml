@@ -14,3 +14,18 @@ enabled = true
 id = "address-pr-review"
 path = "address-pr-review"
 enabled = true
+
+[[skills]]
+id = "visual-review-pr"
+path = "visual-review-pr"
+enabled = true
+
+[[skills]]
+id = "web-regression-audit"
+path = "web-regression-audit"
+enabled = true
+
+[[skills]]
+id = "visual-audit-to-tests"
+path = "visual-audit-to-tests"
+enabled = true

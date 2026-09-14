@@ -13,6 +13,12 @@ Review the proposed diff. Do not adjust the branch or address existing review co
 2. Identify required behavior, preserved interfaces, and explicit non-goals.
 3. Ground convention and reuse claims in actual repository evidence.
 
+## Decide whether browser testing is needed
+
+Briefly state material decisions and their reasons as they are made, including scope, baseline, browser testing, delegation, classification, and verdict. Keep these to practical conclusions, not private reasoning or tool narration.
+
+After inspecting the diff and callers, decide whether rendered UI, interaction, navigation, state, accessibility, or user-visible API/model output changes. If so, use ../visual-review-pr/SKILL.md to coordinate a browser subagent and screenshot audit while continuing source review. Respect an explicit source-only scope. If no UI behavior is affected, state why and skip browser testing. Distinguish regressions, new-feature defects, and pre-existing issues; category and blocker severity are separate.
+
 ## Focus on blockers and regressions
 
 - Prioritize concrete correctness, security, data-loss, concurrency, and compatibility defects introduced or worsened by the change.
@@ -40,6 +46,8 @@ Do not use a question as a softer substitute for a known defect. Do not mark a s
 
 ## Draft before posting
 
+For a visual audit, visual-review-pr governs the screenshot report, three categories, inline posting, and verdict. The defaults below apply to source-only reviews. A request to post already supplies authorization; do not ask again.
+
 Present the proposed review disposition in one short line, followed by the exact labeled findings ordered by severity. Do not repeat the findings in a separate summary or add a count for every label. If there are no findings, say no blockers or regressions were found and mention any material verification limit. Do not post a review or PR comment without explicit authorization.
 
 If authorized, post only the approved findings and return the PR URL:
@@ -50,6 +58,6 @@ If authorized, post only the approved findings and return the PR URL:
 
 ## Boundaries
 
-- Do not edit files, commit, push, or resolve review threads under this skill.
+- Do not edit app code, commit, push, or resolve review threads under this skill. Writing audit evidence is allowed when browser testing applies.
 - Do not turn review findings into implementation work without a separate user request.
 - Use address-pr-review when the task is to modify an existing PR from reviewer feedback.

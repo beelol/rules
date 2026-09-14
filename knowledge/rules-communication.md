@@ -9,3 +9,4 @@
 - Actionable findings must stand alone without surrounding context, use brief **Why/Fix** sections, and end with the smallest concrete fix.
 - GitHub review comments do not include automated-review badges.
 - PR descriptions and reviews must stand alone for readers without ticket or conversation context. Reviews prioritize concrete blockers and regressions, with brief actionable findings and no optional cleanup unless requested.
+- Review and audit skills announce material decisions and brief reasons when made, including UI routing, baseline, suite reuse, delegation, classification, and verdict.
