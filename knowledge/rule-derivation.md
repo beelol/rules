@@ -5,3 +5,4 @@
 - Architecture guidance now requires searching for existing same-responsibility code and placing reusable generic code in the nearest shared module.
 - Ambiguous repository priority should be surfaced before implementation when it could materially change the solution.
 - Linear-backed pull requests use a scan-friendly project, workstream, and bounded-outcome title; issue links and stack bases remain in the description.
+- Prefer separate types, component folders with component and index export files, and nearby named files for complex functions/hooks. Reusable utilities belong in the appropriate utils folder; preserve existing app conventions and avoid unrelated restructuring.

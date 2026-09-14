@@ -5,12 +5,12 @@ description: Open pull requests in TestBox's preferred style -- concise, technic
 
 # Open Pull Requests
 
-A PR description's job is to make the diff reviewable, not to restate it. This skill produces concise, technical PR bodies that lead with the *delta in intent* and list the actual tests that were run.
+Write concise PR descriptions for reviewers with no prior context. Explain the affected behavior, what changes, and the actual verification without requiring the reader to open a ticket or reconstruct the conversation.
 
 ## Core principles
 
-1. **PR = technical audit trail; the ticket carries the functional context.** The Linear ticket explains *why the feature exists*. The PR explains *why the code looks the way it does*. A one-sentence functional opener is fine to orient a reviewer who hasn't clicked through to Linear -- but don't paraphrase the ticket in depth. Link to it for everything else.
-2. **Lead with the delta in intent, not the diff.** The reviewer sees the diff already. The body's job is what was true before, what is true after, and why this approach over the alternative.
+1. **Make the description stand alone.** Name the affected feature or workflow, the concrete problem or requirement, and the resulting behavior. Include enough context for someone unfamiliar with the work to understand its purpose and assess the change. Link the ticket for additional detail; never rely on it to supply essential context.
+2. **Lead with the behavior change.** Explain what happened before and what happens after, using a concrete trigger or example when useful. Include implementation decisions only when they help the reviewer assess correctness or a meaningful tradeoff.
 3. **Match length to change size.** A six-line bug fix gets two sentences. A refactor that moves three modules gets a paragraph. If the description is longer than the diff is interesting, it is wrong.
 4. **Never hallucinate the why.** Only the author knows the real motivation. If the why is not inferable from the diff, branch name, commits, or linked ticket, ask the user one targeted question rather than invent one. Leaving the section blank is better than guessing.
 5. **No filler openers.** Strip "This PR introduces...", "In this change we...", "The purpose of this PR is...". Start with the verb.
@@ -62,7 +62,7 @@ If no template is found, use the default skeleton below.
 
 ### What changed
 
-<delta in intent>
+<affected behavior, concrete before/after, and any decision needed to assess the change>
 
 ### Tests
 
@@ -139,7 +139,7 @@ If the branch has no ticket ID at all, ask the user once whether one applies bef
    - `git branch --show-current`
    - `gh pr view --json title,body,url` -- if this returns an existing PR, capture its current body.
 3. **Infer the ticket ID** from the branch with `[A-Z]+-\d+`. If found, always fetch the ticket via the available Linear MCP connector -- its title/description shapes the one-sentence functional opener in `### What did I change`. If no Linear connector is available, surface this to the user and ask for the ticket context in chat rather than guessing. Never paste the ticket body into the PR.
-4. **Size the description to the change.** Skim the diff: one-liner fix, focused feature, or larger refactor. Pick the shortest shape that captures the delta in intent.
+4. **Size the description to the change.** Skim the diff: one-liner fix, focused feature, or larger refactor. Pick the shortest shape that explains the problem and resulting behavior to a reader with no prior context.
 5. **Draft in chat first.** Show the user the title and body. Do not run `gh pr create` or `gh pr edit` yet.
 6. **Ask one targeted question if -- and only if -- the why is genuinely not inferable.** Never fabricate.
 7. **On approval:**
@@ -152,7 +152,7 @@ If the branch has no ticket ID at all, ask the user once whether one applies bef
 
 - AI-attribution footers: no `Co-Authored-By: Claude`, no "Generated with Claude Code" / "Generated with [tool]" lines, no `claude.com` / `anthropic.com` / `cursor.sh` links.
 - Emojis. Unicode symbols (✓, ✗, →, ⚠) only if the local repo already uses them.
-- Paraphrasing the Linear ticket in depth. A one-sentence functional opener is fine; everything else belongs in Linear (linked).
+- Copying the ticket body. Include essential functional context in the PR and link to the ticket for further detail.
 - Per-file enumeration. The diff already shows which files changed.
 - Filler openers ("This PR introduces...", "In this change we...", "The purpose of this PR is...").
 - Bare placeholders ("N/A", "None", "--" with no reason). `N/A -- no UI change` is fine; `N/A` alone is not.

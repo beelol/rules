@@ -1,6 +1,6 @@
 ---
 name: review-pr
-description: "Deep, concise, read-only review of a GitHub pull request that labels every finding as a blocker, suggestion, or question and requests changes when blockers exist. Flags only real feature-relevant issues: correctness bugs, repository convention mismatches, scope creep, dead or duplicated code, and generic inline code that should be shared. Use when asked to review or audit a PR, inspect a PR diff, or draft review findings. Do not use to modify a PR from existing reviewer feedback; use address-pr-review instead."
+description: "Review a GitHub pull request for evidence-backed blockers and regressions, with brief findings understandable without prior context. Use when asked to review or audit a PR, inspect a PR diff, or draft review findings. Read-only; use address-pr-review to implement existing feedback."
 ---
 
 # Review a Pull Request
@@ -13,16 +13,12 @@ Review the proposed diff. Do not adjust the branch or address existing review co
 2. Identify required behavior, preserved interfaces, and explicit non-goals.
 3. Ground convention and reuse claims in actual repository evidence.
 
-## Flag only real issues
+## Focus on blockers and regressions
 
-- Correctness, security, data-loss, concurrency, or compatibility defects.
-- Violations of demonstrated repository structure or conventions.
-- Duplicated functionality when an existing symbol and path can be cited.
-- Dead code, unused scaffolding, or generic abstractions without a current consumer.
-- Scope creep, extra knobs, or bells and whistles that do not support the feature.
-- Missing verification for behavior changed by the PR.
-
-Ignore pre-existing problems, personal style, speculative cleanup, praise, and unrelated debt. Zero findings is valid.
+- Prioritize concrete correctness, security, data-loss, concurrency, and compatibility defects introduced or worsened by the change.
+- Verify the failure scenario against callers, requirements, and nearby code before reporting it. State what triggers it and what breaks.
+- Report structural, reuse, scope, or verification concerns only when they cause a concrete defect, violate an explicit requirement, or leave a material regression risk unsupported by checks.
+- Omit pre-existing problems, style preferences, speculative cleanup, optional refactors, praise, and unrelated debt. Broaden to nonblocking improvements only when the user explicitly requests them. Zero findings is valid.
 
 For every blocker or suggestion, write a self-contained finding that makes sense without the PR body, surrounding diff, or prior conversation:
 
@@ -30,35 +26,21 @@ For every blocker or suggestion, write a self-contained finding that makes sense
 - **Fix:** In one short final sentence, give the smallest corrective change and include the required regression test when behavior changes.
 - Cite the exact path and tight line range.
 
-Keep each complete **Why/Fix** item brief. Do not make the reader reconstruct impact, cause, or remediation from implementation details. For every question, provide path and line, the relevant context, and the direct question.
+Aim for two or three short sentences per complete **Why/Fix** item. Supply only the context needed to understand the trigger, impact, cause, and smallest fix. Do not make the reader reconstruct impact, cause, or remediation from implementation details. For every question, provide path and line, the relevant context, and the direct question.
 
 ## Label every finding
 
 Assign exactly one semantic label and prefix the finding with it:
 
 - `[blocker]`: An evidence-backed defect that must be fixed before merge because it violates required behavior or creates a material correctness, security, data-loss, compatibility, or regression risk.
-- `[suggestion]`: A concrete, feature-relevant improvement that is worth addressing but does not need to block merge.
-- `[question]`: An unresolved ambiguity that needs clarification before it can be judged as a defect. Phrase it as a direct question and do not imply that it blocks merge.
+- `[suggestion]`: A concrete nonblocking improvement; include only when the user explicitly requested a broader review.
+- `[question]`: An unresolved ambiguity necessary to assess a potential blocker or regression. Give the concrete scenario, ask directly, and do not imply that an unverified defect is established.
 
 Do not use a question as a softer substitute for a known defect. Do not mark a suggestion or question as a blocker without repository, requirement, or behavioral evidence.
 
-## Pitfalls
-Look out for the following pitfalls during your review. Report them only when they meet the evidence rules above, then assign the appropriate semantic label.
-- Nested ternaries that should just be if/then/else statements
-- Dependencies that don't make sense, like dependency cycles, or infinite re-renders, excessive re-rendering where there should only be one render.
-- Switch statements that would be cleaner as a map/dictionary/hashmap/hash (key-value constant time structure)
-- Conditionals that would be clear cleaner as a map/dictionary/hashmap/hash (key-value constant time structure)
-- Excessive additional features that don't support the primary features. Scan for evidence of what the feature is intended to be.
-- Scope creep.
-- Nice-to-haves that introduce necessary maintenance and potential regressions that can be done in a follow up or are not necessary to support the feature at all.
-- Extra code that was added or duplicated that are a slight deviation from something that already exists and could be used instead from an existing piece of code.
-- In-line or in same file utilities that should be generic or are not useful and should be removed.
-- Files that are not single-purposed and include lots of changes.
-- File structures/code organization that deviates from the repository standard.
-
 ## Draft before posting
 
-Present a concise summary, the count for each label, the proposed review disposition, and the exact labeled inline findings in chat first. Do not post a review or PR comment without explicit authorization.
+Present the proposed review disposition in one short line, followed by the exact labeled findings ordered by severity. Do not repeat the findings in a separate summary or add a count for every label. If there are no findings, say no blockers or regressions were found and mention any material verification limit. Do not post a review or PR comment without explicit authorization.
 
 If authorized, post only the approved findings and return the PR URL:
 

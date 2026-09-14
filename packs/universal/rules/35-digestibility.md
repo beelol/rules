@@ -12,3 +12,6 @@
 - Keep specific technical implementation details, code tokens, long symbols, and diffs near the end of the output unless they are required to understand the decision.
 - Avoid long blocks of code symbols, identifiers, diffs, or file lists when a clear explanation would make the point faster.
 - Include just enough technical detail to support the conclusion. Add deeper mechanics only when asked or when they materially affect the decision.
+
+- Write PR descriptions and review findings for someone with no prior context. Name the affected behavior, the relevant before/after or failure scenario, and the impact; links supplement the explanation rather than replace it.
+- Keep reviews especially brief and focused on evidence-backed blockers and regressions introduced or worsened by the change. Omit style preferences, speculative cleanup, and optional refactors unless explicitly requested; include only the context, evidence, and smallest fix needed to act.
