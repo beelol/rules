@@ -29,3 +29,8 @@ enabled = true
 id = "visual-audit-to-tests"
 path = "visual-audit-to-tests"
 enabled = true
+
+[[skills]]
+id = "ultra-clear-reviewable-review"
+path = "ultra-clear-reviewable-review"
+enabled = true
