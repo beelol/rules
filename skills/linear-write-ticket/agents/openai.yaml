@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Linear Tickets"
+  short_description: "Write concise, self-contained Linear tickets"
+  default_prompt: "Use $linear-write-ticket to draft or revise a concise Linear ticket."
