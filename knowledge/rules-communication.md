@@ -10,3 +10,4 @@
 - GitHub review comments do not include automated-review badges.
 - PR descriptions and reviews must stand alone for readers without ticket or conversation context. Reviews prioritize concrete blockers and regressions, with brief actionable findings and no optional cleanup unless requested.
 - Review and audit skills announce material decisions and brief reasons when made, including UI routing, baseline, suite reuse, delegation, classification, and verdict.
+- `ultra-clear-reviewable-review` is the zero-context review format: a glossary of every term, then What/Why/Fix per finding, judged only against the change's stated intent, with out-of-scope gaps listed as follow-ups rather than problems.
