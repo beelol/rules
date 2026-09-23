@@ -44,3 +44,8 @@ enabled = true
 id = "live-regression-report"
 path = "live-regression-report"
 enabled = true
+
+[[skills]]
+id = "monarch-release"
+path = "monarch-release"
+enabled = true
