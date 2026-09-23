@@ -1,0 +1,4 @@
+interface:
+  display_name: "Live Regression Report"
+  short_description: "Live checks and screenshots in a public report"
+  default_prompt: "Use $live-regression-report to test the selected live app flows, capture screenshot evidence, and publish a public ChatGPT Site with the verified results."

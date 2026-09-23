@@ -39,3 +39,8 @@ enabled = true
 id = "linear-write-ticket"
 path = "linear-write-ticket"
 enabled = true
+
+[[skills]]
+id = "live-regression-report"
+path = "live-regression-report"
+enabled = true
