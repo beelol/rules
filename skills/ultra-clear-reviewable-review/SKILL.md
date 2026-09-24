@@ -1,6 +1,6 @@
 ---
 name: ultra-clear-reviewable-review
-description: "Write a review of a PR, branch, or design that a reader with zero context understands on one read: a short glossary of every term, then each finding as What / Why / Fix in plain words, judged only against what the change intends to do. Use when asked for a clear, concise, no-context, shareable, or reviewable review, or when a review needs to be understood by someone outside the work. Read-only unless the user asks to post it."
+description: "Write a review of a PR, branch, or design that a reader with zero context understands on one read, with each finding as What / Why / Fix in plain words. Use when asked for a clear, concise, no-context, shareable, or reviewable review, or when a review needs to be understood by someone outside the work. Read-only unless the user asks to post it."
 ---
 
 # Ultra-Clear Reviewable Review
@@ -19,12 +19,13 @@ Produce a review that someone who never saw the change can read once, understand
 
 Use this order. Omit a section when it has nothing in it.
 
-1. **One-line verdict.** The overall result in one sentence. For example, "Product code is low risk; the problems are in what the new local modes do." Put direct questions to the author here, such as "Have you run this against dev? If not, can you try?" Never list "not tested yet" as a finding; testing before merge is assumed.
-2. **The pieces.** A short glossary. Define every project-specific noun the findings use (for example snapshot, manifest, clone, vault, forwarder) in one plain sentence each: what it is and what it is for. If a reader would have to ask "what is that?", it belongs here.
-3. **Problems.** Ordered by severity, most severe first.
-4. **Notes.** Real concerns that are not defects in this change, such as data handling or cost.
-5. **Follow-ups, not problems.** Gaps that exist only because the change does not try to do that yet. Never list these as problems.
-6. **What's safe.** Only when the reader would otherwise worry. One or two lines naming what you checked and found fine.
+1. **One-line review verdict.** Summarize only the review outcome: merge blockers, suggestions, and rollout prerequisites. Do not add a summary of what the PR does. If the user separately asks for a PR explanation, provide it outside the review. The overall result fits in one sentence. For example, "Product code is low risk; the problems are in what the new local modes do." Put direct questions to the author here, such as "Have you run this against dev? If not, can you try?" Never list "not tested yet" as a finding; testing before merge is assumed.
+2. **Problems.** Ordered by severity, most severe first. Explain necessary terms where they first appear in each finding.
+3. **Notes.** Real concerns that are not defects in this change, such as data handling or cost.
+4. **Follow-ups, not problems.** Gaps that exist only because the change does not try to do that yet. Never list these as problems.
+5. **What's safe.** Only when the reader would otherwise worry. One or two lines naming the specific behavior found safe.
+
+The review ends after its substantive content. Omit a separate glossary and routine process footer: test totals, checks not rerun, head hashes or recheck status, and posting status. Still perform verification and head checks. Keep evidence supporting a finding inside that finding; qualify a verdict when missing evidence materially limits it.
 
 ## 3. Finding format
 
@@ -32,7 +33,7 @@ Each finding has a plain-statement title and these clauses:
 
 ```markdown
 **N. <What goes wrong, stated plainly>** (`path:line`)
-- **Context:** <Only if a term or mechanism is still unclear after the glossary. One sentence.>
+- **Context:** <Only if the finding needs a brief explanation of a term or mechanism. One sentence.>
 - **What:** <The problem in one sentence.>
 - **Why:** <Why the reader cares: the concrete impact on people, data, cost, or other teams. One sentence.>
 - **Fix:** <The smallest change that removes the problem. One sentence.>
@@ -55,12 +56,15 @@ Rules for each clause:
 - One idea per sentence. Subject, verb, object. No clause chains and no em dashes.
 - No hedging filler, no praise, no restating the PR description.
 - Do not drop a fact to make a sentence shorter. Tighten wording, not content.
-- Keep the whole review readable in about a minute. If it runs longer, cut low-severity items before cutting context from high-severity ones.
+- Target 200–300 words for the whole review, including the verdict and findings; use fewer when sufficient. Keep What / Why / Fix to one short sentence each. Preserve concrete impact and recovery requirements; cut repeated context and low-severity items first.
 
 ## 5. Self-check before sending
 
+- Does the opening summarize the review outcome only, with no PR overview?
+- Is the full review concise (normally 200–300 words or fewer), without repeated context?
 - Could someone who never saw the PR explain each finding back in their own words?
-- Is every noun in the findings either common English or defined under "The pieces"?
+- Are necessary technical terms explained where they first appear, with no separate glossary?
+- Does the review end without a routine process footer?
 - Does any problem criticize something the change does not try to do? Move it to "Follow-ups, not problems".
 - Is every finding confirmed in code, or clearly marked as unverified?
 - Does every finding have exactly one What, one Why, and one Fix?
@@ -68,7 +72,7 @@ Rules for each clause:
 ## 6. Posting (only when the user asks)
 
 - Post each finding as an inline comment on its cited line. The comment holds the title and the What/Why/Fix clauses, with no line reference.
-- Put the verdict, questions, glossary, notes, follow-ups, and "What's safe" in the review body. Do not repeat the findings there.
+- Put the verdict, questions, notes, follow-ups, and "What's safe" in the review body. Do not repeat the findings there.
 - When the findings span stacked PRs, post one review per PR, each with the findings whose lines live in that PR.
 - Submit as a `COMMENT` review unless the user asks for another type.
 
