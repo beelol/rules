@@ -48,11 +48,6 @@ path = "rules/45-architecture.md"
 enabled = true
 
 [[modules]]
-id = "knowledge-fragments"
-path = "rules/47-knowledge-fragments.md"
-enabled = true
-
-[[modules]]
 id = "ticket-tracking"
 path = "rules/48-ticket-tracking.md"
 enabled = true
