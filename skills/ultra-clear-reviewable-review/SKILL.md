@@ -1,6 +1,6 @@
 ---
 name: ultra-clear-reviewable-review
-description: "Write a review of a PR, branch, or design that a reader with zero context understands on one read, with each finding as What / Why / Fix in plain words. Use when asked for a clear, concise, no-context, shareable, or reviewable review, or when a review needs to be understood by someone outside the work. Read-only unless the user asks to post it."
+description: "Write a review of a PR, branch, or design that a reader with zero context understands on one read, with each finding as a short title / Why / Fix in plain words. Use when asked for a clear, concise, no-context, shareable, or reviewable review, or when a review needs to be understood by someone outside the work. Read-only unless the user asks to post it."
 ---
 
 # Ultra-Clear Reviewable Review
@@ -29,26 +29,24 @@ The review ends after its substantive content. Omit a separate glossary and rout
 
 ## 3. Finding format
 
-Each finding has a plain-statement title and these clauses:
+Each finding has a short plain-language title, one **Why** sentence, and one **Fix** sentence. Aim for 40–70 words including the title and evidence. The title carries what goes wrong; do not repeat it in separate What or Context sections.
 
 ```markdown
-**N. <What goes wrong, stated plainly>** (`path:line`)
-- **Context:** <Only if the finding needs a brief explanation of a term or mechanism. One sentence.>
-- **What:** <The problem in one sentence.>
-- **Why:** <Why the reader cares: the concrete impact on people, data, cost, or other teams. One sentence.>
-- **Fix:** <The smallest change that removes the problem. One sentence.>
+**[suggestion] Require confirmation before reporting success.**
+
+**Why:** The script reports success without an API confirmation, hiding failed operations.
+
+**Fix:** Require the response's success flag and report missing or malformed responses as errors. [Code](path:line)
 ```
 
-Rules for each clause:
-
-- **What** says what happens, not how the code is written. Name the behavior, not the variable.
-- **Why** names a real consequence: who is affected and how ("the first workflow someone runs writes to real customer tenants"). Never "this is risky" or "this could cause issues".
-- **Fix** is one action a person can take. No option lists.
-- Use the most accurate verb for what happens, seen from the reader's side. For example, a clone that skips rows "leaves them out"; it does not "delete" them, because the source is untouched.
-- For a concern that is worth raising but should not hold the merge, such as cost, time, or resource visibility, phrase the Fix as "Consider ..." and end the finding with "Not a blocker."
-- Cite `path:line` at the current PR head in the title. Keep line references out of the clauses themselves.
-- Drop throwaway findings: anything without a concrete consequence, such as "two setups exist" with no named harm.
-- Keep code identifiers out of What and Why unless the reader needs the name to find the thing. Put a file path in Fix only when the fix needs it.
+- **Title:** Name the affected behavior or corrective action so someone who never saw the PR understands it.
+- **Why:** Name the concrete consequence and the behavior causing it; include the trigger when needed to understand the failure.
+- **Fix:** Give the smallest correction, with required regression coverage when behavior changes. Preserve essential limits such as once per run or before each write.
+- Label each finding `[blocker]`, `[suggestion]`, or `[question]` accurately. Include nonblocking improvements only when the requested scope covers them; a direct label needs no repeated “Not a blocker” footer.
+- Use accurate verbs: leaving rows out of a copy does not delete the source rows.
+- Link the exact path and tight line range at the current PR head after the explanation. The finding must make sense without opening its link.
+- Keep implementation names in Fix when possible; preserve details needed for correctness, including scope, ownership, and freshness checks.
+- Drop findings without a concrete consequence. For unresolved ambiguities, give the relevant context and ask a direct question instead of asserting an unverified defect.
 
 ## 4. Writing rules
 
@@ -56,7 +54,7 @@ Rules for each clause:
 - One idea per sentence. Subject, verb, object. No clause chains and no em dashes.
 - No hedging filler, no praise, no restating the PR description.
 - Do not drop a fact to make a sentence shorter. Tighten wording, not content.
-- Target 200–300 words for the whole review, including the verdict and findings; use fewer when sufficient. Keep What / Why / Fix to one short sentence each. Preserve concrete impact and recovery requirements; cut repeated context and low-severity items first.
+- Target 200–300 words for the whole review, including the verdict and findings; use fewer when sufficient. Keep Why and Fix to one short sentence each. Preserve concrete impact and recovery requirements; cut repeated context and low-severity items first.
 
 ## 5. Self-check before sending
 
@@ -67,11 +65,11 @@ Rules for each clause:
 - Does the review end without a routine process footer?
 - Does any problem criticize something the change does not try to do? Move it to "Follow-ups, not problems".
 - Is every finding confirmed in code, or clearly marked as unverified?
-- Does every finding have exactly one What, one Why, and one Fix?
+- Does each finding have a short title, one Why, and one Fix, without repeated context?
 
 ## 6. Posting (only when the user asks)
 
-- Post each finding as an inline comment on its cited line. The comment holds the title and the What/Why/Fix clauses, with no line reference.
+- Post each finding as an inline comment on its cited line. The comment holds the title and Why/Fix clauses, with no redundant line reference.
 - Put the verdict, questions, notes, follow-ups, and "What's safe" in the review body. Do not repeat the findings there.
 - When the findings span stacked PRs, post one review per PR, each with the findings whose lines live in that PR.
 - Submit as a `COMMENT` review unless the user asks for another type.

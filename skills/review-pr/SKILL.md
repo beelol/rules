@@ -26,13 +26,24 @@ After inspecting the diff and callers, decide whether rendered UI, interaction, 
 - Report structural, reuse, scope, or verification concerns only when they cause a concrete defect, violate an explicit requirement, or leave a material regression risk unsupported by checks.
 - Omit pre-existing problems, style preferences, speculative cleanup, optional refactors, praise, and unrelated debt. Broaden to nonblocking improvements only when the user explicitly requests them. Zero findings is valid.
 
-For every blocker or suggestion, write a self-contained finding that makes sense without the PR body, surrounding diff, or prior conversation:
+## Write concise, self-contained findings
 
-- **Why:** In one or two short sentences, lead with the concrete user or system impact, then name the code behavior that causes it.
-- **Fix:** In one short final sentence, give the smallest corrective change and include the required regression test when behavior changes.
-- Cite the exact path and tight line range.
+Each blocker or suggestion has a short plain-language title, one **Why** sentence, and one **Fix** sentence. Aim for 40–70 words including the title and evidence. Name the affected behavior so someone who never saw the PR can understand the problem and act on it.
 
-Aim for two or three short sentences per complete **Why/Fix** item. Supply only the context needed to understand the trigger, impact, cause, and smallest fix. Do not make the reader reconstruct impact, cause, or remediation from implementation details. For every question, provide path and line, the relevant context, and the direct question.
+```markdown
+**[suggestion] Require confirmation before reporting success.**
+
+**Why:** The script reports success without an API confirmation, hiding failed operations.
+
+**Fix:** Require the response's success flag and report missing or malformed responses as errors. [Code](path:line)
+```
+
+- **Title:** State the problem or corrective action without repeating it in a separate What or Context section.
+- **Why:** Name the concrete consequence and the behavior causing it; supply the trigger when needed to understand the failure.
+- **Fix:** Give the smallest correction and required regression coverage when behavior changes. State essential limits explicitly, such as once per run or before each write.
+- **Evidence:** Link the exact path and tight line range after the explanation. Links support a finding; its meaning stands without opening them.
+
+Use familiar words and keep implementation names in Fix when possible. Preserve details needed for correctness, including scope, ownership, and freshness checks; remove repeated context and extra explanation. For questions, give the relevant context, path and line, and the direct question.
 
 ## Label every finding
 
