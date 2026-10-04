@@ -5,6 +5,8 @@ description: Review a PR for UI regressions and whether its new behavior works, 
 
 # Visual PR Review
 
+Use **review-pr** (../review-pr/SKILL.md) for scope confirmation, independent source/product review passes, final packets, revisions, and posting. This skill supplies browser evidence. When called by review-pr, continue its existing review rather than restarting confirmation or its passes.
+
 ## Decide and announce
 
 Read the PR requirements, current diff, base branch, deployment details, and nearby callers. Briefly state each material decision and its reason when made: scope, baseline, UI testing needed or skipped, suite reuse, delegation/model, classification, verdict, and publishing. State concise conclusions and evidence, not private reasoning or a narration of tool calls.
@@ -23,8 +25,8 @@ No baseline is automatically correct: for stacked PRs use the intended parent; f
 
 Produce the web audit's screenshot site/report. Keep three finding categories: regression, new-feature defect, and pre-existing issue. Severity is separate; a new-feature defect may block merge even though it is not a regression. Default merge judgment focuses on regressions and required new behavior. Pre-existing findings remain nonblocking unless explicitly in scope; do not silently fix them.
 
-When the user authorizes posting, publish one consolidated GitHub review after validation, with each actionable finding inline on a verified relevant diff line. Each finding must stand alone: category and severity, trigger and expected/actual behavior, impact, smallest fix, and brief evidence. Use two or three short sentences where possible. Do not replace findings with the audit-site link or require readers to open it. Screenshots can support a comment directly when useful.
+Deliver findings through review-pr's complete vertical packet for each PR: private explainer, exact top-level body, then exact inline comments with What / Why / Fix. Preserve the audit category in the explanation and use review-pr's severity labels. Keep trigger, expected/actual behavior, impact, smallest fix, and relevant evidence self-contained; screenshots supplement the text.
 
-Do not invent anchors for pre-existing issues or unavailable source: put those in a short, separately labeled review-body section if they cannot be attached honestly. Keep the audit link in the task's delivery, separate from the PR findings. Deduplicate existing comments rather than repeatedly posting the same findings. Recheck PR head before posting; if it changed, retest affected cases and update anchors.
+Do not invent anchors for pre-existing issues or unavailable source: propose them in a separately labeled review-body section when relevant to the agreed scope. Keep the audit link in the task's delivery, separate from the PR findings. Check existing comments to avoid duplicate findings.
 
-Use REQUEST_CHANGES for confirmed blockers; APPROVE only when essential acceptance and regression checks support it and approval is possible; otherwise COMMENT with the remaining limits. Missing access or an untested path is not a passing result. If the user asked only for a draft, stop at the draft. A request to post already supplies authorization; do not ask twice. Return the review URL and separate audit artifact.
+Use review-pr's approval, freshness, verbatim posting, event, and partial-failure rules for both source and visual reviews. A format approval or an initial request to post does not approve unseen wording. Return confirmed review links and the separate audit artifact after posting. Missing access or an untested path is not a passing result.

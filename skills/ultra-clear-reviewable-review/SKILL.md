@@ -7,6 +7,12 @@ description: "Write a review of a PR, branch, or design that a reader with zero 
 
 Produce a review that someone who never saw the change can read once, understand, and act on. Clarity beats completeness of detail; correctness is never traded away.
 
+## PR reviews use review-pr
+
+For a GitHub PR, read and follow **review-pr** (../review-pr/SKILL.md). It owns intent confirmation, three independent passes, severity, the complete vertical packet per PR, explicit What / Why / Fix comments, revisions, and exact approved posting. Apply this skill's plain-language writing rules within that packet. Its section order and posting policy take precedence over the branch/design defaults below; keep the private PR explainer outside the posting text.
+
+The remaining structure, finding format, and self-check defaults apply to branch or design reviews without a GitHub PR. For a PR, check the review-pr packet instead.
+
 ## 1. Verify before writing
 
 1. Read the PR title, body, full diff, and the code the diff calls into. For a local-only review, read the fetched branch; do not post anything.
@@ -67,12 +73,9 @@ Each finding has a short plain-language title, one **Why** sentence, and one **F
 - Is every finding confirmed in code, or clearly marked as unverified?
 - Does each finding have a short title, one Why, and one Fix, without repeated context?
 
-## 6. Posting (only when the user asks)
+## 6. Posting
 
-- Post each finding as an inline comment on its cited line. The comment holds the title and Why/Fix clauses, with no redundant line reference.
-- Put the verdict, questions, notes, follow-ups, and "What's safe" in the review body. Do not repeat the findings there.
-- When the findings span stacked PRs, post one review per PR, each with the findings whose lines live in that PR.
-- Submit as a `COMMENT` review unless the user asks for another type.
+For any GitHub posting, use **review-pr**: show the complete per-PR packet in chat, obtain agreement to that exact text, check freshness, and post only the approved body/comments verbatim. Branch/design drafts remain in chat unless the user specifies another destination.
 
 ## Boundaries
 
