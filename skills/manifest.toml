@@ -49,3 +49,8 @@ enabled = true
 id = "monarch-release"
 path = "monarch-release"
 enabled = true
+
+[[skills]]
+id = "feature-ac-workflow"
+path = "feature-ac-workflow"
+enabled = true

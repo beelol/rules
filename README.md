@@ -61,3 +61,16 @@ Edit files under `packs/universal/rules/`, then rebuild generated artifacts with
 ```bash
 ovmd pack build --source .
 ```
+
+## Global Skills
+
+`skills/manifest.toml` registers reusable skills. From this checkout, reconcile
+them into global Codex and Claude installations with:
+
+```bash
+ovmd skills sync --global --source ./skills
+```
+
+[Feature and AC Workflow](skills/feature-ac-workflow/SKILL.md) turns a new or
+existing project into linked feature documents, a root README acceptance board,
+and a resumable driver goal. Invoke it as `$feature-ac-workflow`.

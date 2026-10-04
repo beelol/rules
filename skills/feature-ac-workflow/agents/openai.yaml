@@ -1,0 +1,4 @@
+interface:
+  display_name: "Feature and AC Workflow"
+  short_description: "Build feature RFCs, README ACs, and a driver goal"
+  default_prompt: "Use $feature-ac-workflow to organize this project into linked feature RFCs, a root README acceptance checklist, and a resumable development goal."
