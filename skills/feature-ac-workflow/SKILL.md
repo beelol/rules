@@ -114,11 +114,21 @@ scope is complete, the user stops work, a budget ends, or all remaining work is
 blocked. Never claim future unattended execution without an available authorized
 runner; writing a goal does not schedule it.
 
-Use one optional current handoff file, default `work/HANDOFF.md`. Replace it at
-meaningful transitions and before stopping. Record current ACs, checkout,
-unmerged changes/PRs, evidence limits, blockers, and exact next action. Remove it
-when nothing needs transfer. Keep durable facts and completed evidence in their
-proper documents, not an accumulating driver diary.
+Use one optional current handoff file, default `work/HANDOFF.md`. While work is
+unfinished, checkpoint before delegation or long operations and after every edit
+batch, subtask, test run, merge, or blocker. During active work, allow at most
+**two minutes** between checkpoints. Break long agent-controlled work into small
+batches. Before a blocking call, record the in-flight action and any task/session
+handle; checkpoint again when control returns. Never depend on a final save at
+a usage cutoff. Include this cadence inside the copied goal, not just this skill.
+
+Record current ACs, checkout, delegated tasks, unmerged changes/PRs, verified
+results and limits, blockers, and exact next action. Replace the snapshot safely
+without first deleting the previous complete version. Save before stopping too.
+On resume, reconcile actual files, tasks, and commits against the checkpoint;
+unfinished work is not automatically verified. Remove the handoff when nothing
+needs transfer. Keep durable facts and completed evidence in their proper
+documents, not an accumulating driver diary.
 
 ## Verify the planning deliverable
 

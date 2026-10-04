@@ -68,8 +68,10 @@ Required slots **inside the copied goal**, even when shortening it:
 4. Actual integration branch/process and authority, without invented permissions.
 5. Parent checked only when every child is done; a new gap adds an AC and reopens it.
 6. Reread the board after integration and recheck affected completed ACs.
-7. Exact optional handoff path, replacement contents, update timing, and deletion
-   when there is nothing to transfer. “Read any handoff” alone is insufficient.
+7. Exact handoff path, replacement contents, checkpoints before delegation or long
+   operations and after every edit batch, subtask, test run, merge, or blocker,
+   at most two minutes apart during active work, plus save-before-stop and deletion
+   when nothing needs transfer. “Read any handoff” alone is insufficient.
 8. Continue until authorized ACs close, with honest blocked/budget/user-stop exits.
 
 Treat this as an output contract, not a fixed wording template. Check each slot
@@ -92,7 +94,7 @@ Deliver small coherent verified changes early through the repository's integrati
 
 After each integration, reread the board and handoff for new ACs or changed priorities. Continue until all authorized ACs are verified and integrated. If one is blocked, keep it open and work on independent ACs. Stop only for completion, a user stop, a budget limit, or when all remaining work needs unavailable input, access, or authorization. State the actual blockers without pretending the goal is complete.
 
-Replace work/HANDOFF.md at meaningful transitions and before stopping with current ACs, checkout, unmerged work or PRs, evidence limits, blockers, and the exact next action. Do not append a diary. Delete it when nothing needs transfer. Keep durable facts in knowledge and completed evidence in feature documents. Report merged results and remaining blockers briefly.
+Update work/HANDOFF.md with current ACs, checkout, delegated tasks, unmerged work or PRs, verified results and limits, blockers, and next action. Checkpoint before delegation or long operations and after every edit batch, subtask, test run, merge, or blocker, at most two minutes apart during active work. Before a blocking call, record the in-flight action and checkpoint again on return. Save before stopping too; a usage cutoff may prevent a final save. Safely replace the snapshot, never append a diary. On resume, reconcile actual work against it. Delete it when nothing needs transfer. Keep durable facts and completed evidence in their owner documents. Report results and blockers briefly.
 ```
 
 ## Handoff state
