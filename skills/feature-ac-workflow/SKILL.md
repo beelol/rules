@@ -83,7 +83,11 @@ required slots listed in the reference, including the full handoff lifecycle and
 parent completion rule. Instructions outside the copied block do not travel
 with it. Make it explicit about this loop:
 
-1. Read the board, optional current handoff, selected RFC, knowledge, and code.
+1. Name the AC location inside the copied goal: root `README.md` → `Ready for Go`
+   → `Current features`, in the nested checkboxes below each linked feature.
+   If the repo uses different headings, name their exact hierarchy instead.
+   Explicitly list any additional authorized AC sections, then read the optional
+   handoff, selected RFC, knowledge, and code.
 2. Select the smallest actionable AC respecting dependencies and authorized scope.
 3. Delegate bounded work to the least costly capable available subagent, with
    enough context and owned files. Use stronger review for consequential risk,

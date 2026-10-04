@@ -61,7 +61,8 @@ and repository-specific verification commands. Count the adapted block.
 
 Required slots **inside the copied goal**, even when shortening it:
 
-1. Exact reading entry points and the authorized versus deferred scope.
+1. Exact README heading hierarchy locating the nested AC checkboxes, other
+   reading entry points, and the authorized versus deferred scope.
 2. Least costly capable delegation when available and authorized, with direct fallback.
 3. Small coherent AC delivery, relevant verification, and evidence location.
 4. Actual integration branch/process and authority, without invented permissions.
@@ -77,7 +78,7 @@ in the final block before delivering it.
 ```text
 Continue this project's authorized development from repository state, without relying on previous chat history.
 
-Read AGENTS.md, the root README Ready for Go section, and work/HANDOFF.md if present. Read the selected feature document, linked knowledge, relevant code, and test conventions. The README is the AC board. Feature documents explain behavior, journeys, implementation boundaries, security, and platform limits. Historical evidence is not a fresh test result.
+Read AGENTS.md, the root README Ready for Go section, and work/HANDOFF.md if present. Read the selected feature document, linked knowledge, relevant code, and test conventions. ACs are the nested checkboxes under each feature in root README.md → Ready for Go → Current features. Read any other AC sections explicitly included in the authorized scope. Feature documents explain behavior, journeys, implementation boundaries, security, and platform limits. Historical evidence is not a fresh test result.
 
 Choose the smallest actionable unchecked AC or coherent set in the authorized scope. Respect dependencies. Deferred features remain deferred until approved. Inspect existing implementation first and build only what is missing. When all children are done, check the feature and move on. If work reveals an in-scope gap, add a testable AC and reopen the feature. Do not remove unmet requirements to declare success.
 
