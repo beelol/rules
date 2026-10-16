@@ -15,7 +15,7 @@ Existing agreement counts, including an ordinary reply such as “both.” Conti
 
 ## 2. Gather evidence and run three independent passes
 
-Consult relevant Linear issues, RFCs, PR descriptions/comments, and recorded product decisions, including decisions made by engineers. Distinguish requirements, observed behavior, recorded decisions, inference, and missing or conflicting information. State material scope and verification decisions briefly.
+Consult relevant Linear issues, RFCs, PR descriptions/comments, and recorded product decisions, including decisions made by engineers. Distinguish requirements, observed behavior, recorded decisions, inference, and missing or conflicting information. State material scope decisions briefly. Keep routine verification details in internal evidence.
 
 Delegate three independent passes to separate subagents when available. Give each the same PR/head/base, agreed scope, relevant source locations, and evidence, without another pass's findings:
 
@@ -25,7 +25,7 @@ Delegate three independent passes to separate subagents when available. Give eac
 
 Require evidence, proposed severity, verification, and gaps from each pass. If delegation is unavailable, perform three separate passes and disclose that they were not independent agents. Do not claim a combined result was tested when only individual PRs were tested.
 
-For changes affecting rendered UI, interaction, navigation, state, accessibility, or user-visible API/model output, use **visual-review-pr** for browser evidence. Respect source-only scope and disclose material untested paths. Its browser audit supplements these passes; this skill owns the review packet and posting workflow.
+For changes affecting rendered UI, interaction, navigation, state, accessibility, or user-visible API/model output, use **visual-review-pr** for browser evidence. Respect source-only scope and disclose material untested paths in the private briefing. Its browser audit supplements these passes; this skill owns the review packet and posting workflow.
 
 ## 3. Reconcile findings
 
@@ -45,11 +45,11 @@ Prioritize evidence-backed blockers and regressions. Omit style preferences, spe
 Write the full packet **in chat**, finishing one PR before the next. Use this order:
 
 1. **PR title/link and reviewed head.** Include the proposed GitHub review event as metadata: default `COMMENT`; use `REQUEST_CHANGES` or `APPROVE` when requested and supported by evidence.
-2. **For you — not posted.** A 1–2 sentence plain-English explainer and relevant relationship/scope context. Keep this private briefing separate from the review body.
-3. **Top-level review — exact text to post.** Write the actual summary/verdict, relevant broader questions or decisions, and material verification limits. Summarize checks truthfully. Do not duplicate the full inline findings here.
+2. **For you — not posted.** A 1–2 sentence plain-English explainer and relevant relationship/scope context. Put any material verification limits here. Keep this private briefing separate from the review body.
+3. **Top-level review — exact text to post.** Use 1–3 short sentences for the verdict and necessary questions or decisions. Keep routine checks, test counts/results, and validation sections out of posted review text. Describe a defect that causes a failed check as a finding, not as a test report. Do not repeat the full inline findings here.
 4. **Inline comments — exact text to post.** For every comment, show the verified file, tight line range, and diff side as destination metadata, then the complete comment body. Write “None” when there are no inline comments.
 
-Every inline body has a short title with its label and explicit **What / Why / Fix** clauses, each in complete sentences. Aim for 40–80 words while preserving the trigger, impact, and smallest appropriate correction. Each comment must stand alone; links and screenshots support it rather than replace its explanation.
+Every inline body has a short title with its label and explicit **What / Why / Fix** clauses, each in complete sentences. Aim for 40–70 words: one clear sentence each for What, Why, and Fix, preserving the trigger, impact, and smallest correction. Keep technical detail only where it makes the finding actionable. Each comment must stand alone; links and screenshots support it rather than replace its explanation.
 
 Example inline body, with its file/line supplied separately:
 

@@ -1,6 +1,6 @@
 ---
 name: monarch-release
-description: Run or plan Monarch dev-to-staging-to-production bundle releases, with live deployment checks, exact image and Terraform revisions, release notes, approval gates and monitoring. Use for Monarch deployment and promotion requests, not standalone release QA or application fixes.
+description: Run or plan Monarch dev-to-staging-to-production bundle releases, with deployment checks, exact revisions, Tier C core QA by a GPT-6.1 Sol Medium subagent, screenshot evidence on a ChatGPT Site, and approval gates. Use for Monarch deployment and promotion requests, not standalone QA or app fixes.
 ---
 
 # Monarch releases
@@ -75,7 +75,11 @@ Use a fresh temporary `MANIFEST_PATH`. Inspect `bundleVersion`, `gitSha`, `image
 
 **Images and Terraform are separate evidence.** Reusable deploy workflows can check out each component's pinned SHA for Terraform. A fix merged into main will not repair an older bundle's pinned Terraform. Conversely, GitHub variables and external configuration can change between staging and production even when image digests are identical. Verify the actual workflow checkout and environment-specific inputs; do not promise production success from staging alone.
 
-## 3. Release notes and QA checkpoint
+## 3. Live core QA, release notes and production checkpoint
+
+After staging is verified, run the full Core QA Tier C playbook before proposing production. Read [core-qa.md](references/core-qa.md). Dispatch one `gpt-6.1-sol` subagent at `medium` with a fresh context to execute every Tier C criterion, including the inherited Tier A and B checks, and prepare a concise ChatGPT Site with screenshots and supporting evidence for every result. Do not substitute generated release notes, CI success, or a lower tier for this live run. Report only PASS or FAIL for each required criterion; a missing prerequisite fails verification with its cause stated, rather than proving a product defect. Preserve the playbook's raw statuses in restricted records. No partial coverage or untested item may be presented as a complete pass.
+
+Use an available authenticated user session in the **TestBox** organization first. Otherwise discover the environment's documented SSM parameters for Nora's login and use them securely. If Nora lacks the required workflows or fixtures, request the user's session and continue independent checks. Never invent parameter names, expose credentials, or treat an empty account as proof the workflows work. The reference defines fixture binding, evidence, publication, and completion requirements.
 
 Check whether Release QA started for this exact release:
 
@@ -98,7 +102,7 @@ When manual generation and its paid analysis/publication are authorized, use cur
 
 The cost cap is an example, not authorization. Set `post_to_slack=true` only with explicit user authorization and verify the current destination; do not hardcode a historical channel. Reuse saved output when supported instead of paying to regenerate it.
 
-Wait for release/QA notes and present their material checks and gaps. Ask for production approval against that exact bundle and available QA evidence. There is no assumed complete regression process. If the user explicitly approves promotion despite missing notes or manual QA, retain that limitation and proceed without repeating the approval question.
+Wait for the live Tier C audit and release/QA notes. Present the verified ChatGPT Site, binary verdict, failures, and material gaps in the change-specific notes. Ask for production approval against that exact bundle and evidence. A generated test plan is separate from the executed Tier C result. If the user explicitly approves promotion despite failed core verification or missing notes, retain that limitation and proceed without repeating the approval question; never relabel QA as passed.
 
 ## 4. Promote the approved bundle to production
 
@@ -135,4 +139,4 @@ These are sequential alternatives, not an instruction to force-cancel immediatel
 
 ## Completion
 
-Return the run link, exact bundle, confirmed deployment and smoke status, notes/QA status, and any remaining blocker. Stop the completed monitor. Keep release history and one-off SHAs out of this reusable skill.
+Return the run link, exact bundle, confirmed deployment and smoke status, the Tier C ChatGPT Site and PASS/FAIL verdict, notes status, and any remaining blocker. A successful staging deployment alone does not complete core QA. Stop the completed monitor after its authorized deployment and QA work is finished, or report the precise input needed to continue. Keep release history and one-off SHAs out of this reusable skill.
