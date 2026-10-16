@@ -7,6 +7,10 @@ description: Run or plan Monarch dev-to-staging-to-production bundle releases, w
 
 Target `TestBoxLab/monarch`, not the parent TestBox repository. Discover the checkout and verify its remote; the usual path is `/Users/bilal/projects/testbox/monarch`. Use authenticated GitHub CLI (`/opt/homebrew/bin/gh` on this host). Read current repository instructions and remote workflow definitions before dispatch: `deploy-dev.yml`, `release.yml`, relevant reusable deploy workflows, and `release-qa.yml`. They are authoritative if this skill drifts.
 
+## Maintain through Overmind
+
+This skill belongs to `beelol/rules` under `skills/monarch-release` and is registered in `skills/manifest.toml`. Resolve the installed link before editing. Edit the source checkout, not Overmind's cached copy. After every update to this skill or its references, validate the change, commit and push the intended files, then run `ovmd sync` from the Monarch checkout and `ovmd skills sync --global`. Verify the cache and installed Codex/Claude files match the published commit, including referenced files. Preserve unrelated edits and project guidance outside managed blocks. Do not report the skill update complete before the push and resync are verified.
+
 ## Approval and scope
 
 Start by waiting for the current dev deployment. Do not trigger another dev deployment merely to begin a release.
@@ -77,7 +81,7 @@ Use a fresh temporary `MANIFEST_PATH`. Inspect `bundleVersion`, `gitSha`, `image
 
 ## 3. Live core QA, release notes and production checkpoint
 
-After staging is verified, run the full Core QA Tier C playbook before proposing production. Read [core-qa.md](references/core-qa.md). Dispatch one `gpt-6.1-sol` subagent at `medium` with a fresh context to execute every Tier C criterion, including the inherited Tier A and B checks, and prepare a concise ChatGPT Site with screenshots and supporting evidence for every result. Do not substitute generated release notes, CI success, or a lower tier for this live run. Report only PASS or FAIL for each required criterion; a missing prerequisite fails verification with its cause stated, rather than proving a product defect. Preserve the playbook's raw statuses in restricted records. No partial coverage or untested item may be presented as a complete pass.
+After staging is verified, run the full Core QA Tier C playbook before proposing production. Read [core-qa.md](references/core-qa.md). Dispatch one `gpt-6.1-sol` subagent at `medium` with a fresh context to execute every Tier C criterion, including the inherited Tier A and B checks, and prepare a concise ChatGPT Site with screenshots and supporting evidence for every result. Each result must name the feature in words a new reader understands, link to the exact playbook requirement, and show the journey from action to outcome. Follow the reference's prose contract in both chat and the Site. Do not substitute generated release notes, CI success, or a lower tier for this live run. Report only PASS or FAIL for each required criterion. A missing prerequisite fails verification with its cause stated, rather than proving a product defect. Preserve the playbook's raw statuses in restricted records. No partial coverage or untested item may be presented as a complete pass.
 
 Use an available authenticated user session in the **TestBox** organization first. Otherwise discover the environment's documented SSM parameters for Nora's login and use them securely. If Nora lacks the required workflows or fixtures, request the user's session and continue independent checks. Never invent parameter names, expose credentials, or treat an empty account as proof the workflows work. The reference defines fixture binding, evidence, publication, and completion requirements.
 
