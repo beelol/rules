@@ -59,3 +59,7 @@ enabled = true
 id = "feature-ac-workflow"
 path = "feature-ac-workflow"
 enabled = true
+[[skills]]
+id = "monarch-core-qa"
+path = "monarch-core-qa"
+enabled = true
